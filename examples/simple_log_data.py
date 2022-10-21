@@ -46,14 +46,6 @@ class SimpleExample:
             self.driver.close()
             self.save_data_to_csv()
 
-    def read_ag(self):
-        temp, acc, gyro = self.driver.read_ag_data()
-        print('Temp:{} Acc:{} Gryo:{}'.format(temp, acc, gyro))
-
-    def read_magnetometer(self):
-        mag = self.driver.read_magnetometer()
-        print('Mag {}'.format(mag))
-
     def write_data(self):
         temp, acc, gyro = self.driver.read_ag_data()
         mag = self.driver.read_magnetometer()
@@ -65,7 +57,6 @@ class SimpleExample:
 
     def save_data_to_csv(self):
         self.data.to_csv("data.csv")
-
 
 if __name__ == '__main__':
     SimpleExample().main()
