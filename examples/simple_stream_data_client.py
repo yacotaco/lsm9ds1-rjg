@@ -1,14 +1,25 @@
 """Reads data stream from RPi (IMU, camera)"""
-import socket            
+import socket
+import sys          
 
 class SimpleStreamClient:
     def __init__(self):
         self.data = {}
         self.s = socket.socket()
         self.port = 8888
+        self.ip = '192.168.5.103'
+        self.inputs()
+
+    def inputs(self):
+        try:
+            if len(sys.argv) > 1:
+                self.ip = sys.argv[1]
+                self.port = sys.argv[2]
+        except (ValueError, IndexError):
+            print("Check input values.")
         
     def connect(self):
-        self.s.connect(('192.168.5.103', self.port))
+        self.s.connect((self.ip, self.port))
 
     def read_data(self):
         print(self.s.recv(1024).decode())
