@@ -15,7 +15,6 @@ class SimpleStreamServer:
     has new data and then reads all the sensors."""
 
     def __init__(self):
-        # self.driver = self._create_spi_driver()
         self.driver = self._create_i2c_driver()
         self.driver.configure()
         self.data = {}
@@ -36,8 +35,8 @@ class SimpleStreamServer:
     def init_socket(self):
         try:
             self.s.bind((self.ip, int(self.port)))
-        except Exception as Error:
-            print(Error)
+        except Exception as e:
+            print(e)
 
         self.s.listen(5)
         print("init socket {0}:{1}".format(self.ip, self.port))
@@ -56,22 +55,17 @@ class SimpleStreamServer:
 
     def main(self):
         try:
-            count = 0
             c, addr = self.s.accept()
             print("connection from {0}".format(addr))
             while True:
-            # while count < 100:
                 ag_data_ready = self.driver.read_ag_status().accelerometer_data_available
                 if ag_data_ready:
                     try:
-                        # self.generate_dummy_data()
-                        # self.print_data()
                         self.read_data()
                         self.stream_data(c)
                     except:
                         self.init_socket()
                         self.stream_data(c)
-                    count += 1
                 else:
                     time.sleep(0.00001)
         finally:
@@ -103,6 +97,7 @@ class SimpleStreamServer:
 
     def print_data(self):
         print(self.data)
+
 
 if __name__ == '__main__':
     SimpleStreamServer().main()
