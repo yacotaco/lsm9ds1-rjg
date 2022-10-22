@@ -8,7 +8,7 @@ class SimpleStreamClient:
         self.port = 8888
         
     def connect(self):
-        self.s.connect(('127.0.0.1', self.port))
+        self.s.connect(('192.168.5.103', self.port))
 
     def read_data(self):
         print(self.s.recv(1024).decode())

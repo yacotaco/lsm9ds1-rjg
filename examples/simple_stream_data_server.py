@@ -25,7 +25,7 @@ class SimpleStreamServer:
 
     def init_socket(self):
         try:
-            self.s.bind(('',int(self.port)))
+            self.s.bind(('192.168.5.103',int(self.port)))
         except Exception as Error:
             print(Error)
 
@@ -60,7 +60,7 @@ class SimpleStreamServer:
                         self.stream_data(c)
                     except:
                         self.init_socket()
-                        c.send(str(self.data).encode())
+                        self.stream_data(c)
                     count += 1
                 else:
                     time.sleep(0.00001)
