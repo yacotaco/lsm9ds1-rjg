@@ -28,19 +28,19 @@ class SimpleStreamServer:
     def inputs(self):
         try:
             if len(sys.argv) > 1:
-                self.port = sys.argv[1]
-                self.ip = sys.argv[2]
-        except ValueError:
+                self.ip = sys.argv[1]
+                self.port = sys.argv[2]
+        except (ValueError, IndexError):
             print("Check input values.")
 
     def init_socket(self):
         try:
-            self.s.bind((str(self.ip), int(self.port)))
+            self.s.bind((self.ip, int(self.port)))
         except Exception as Error:
             print(Error)
 
         self.s.listen(5)
-        print("init socket")
+        print("init socket {0}:{1}".format(self.ip, self.port))
 
     @staticmethod
     def _create_i2c_driver() -> Driver:
