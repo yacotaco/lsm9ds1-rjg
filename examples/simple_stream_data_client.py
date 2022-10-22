@@ -1,17 +1,12 @@
 """Reads data stream from RPi (IMU, camera)"""
 import socket            
 
-
 class SimpleStreamClient:
     def __init__(self):
-        # self.driver = self._create_spi_driver()
-        # self.driver = self._create_i2c_driver()
-        # self.driver.configure()
         self.data = {}
         self.s = socket.socket()
-        self.port = 8888
+        self.port = 8880
         
- 
     def connect(self):
         self.s.connect(('127.0.0.1', self.port))
 
@@ -19,7 +14,7 @@ class SimpleStreamClient:
         print(self.s.recv(1024).decode())
 
     def close_connection(self):
-        s.close()   
+        self.s.close()   
     
     def main(self):
         self.connect()
