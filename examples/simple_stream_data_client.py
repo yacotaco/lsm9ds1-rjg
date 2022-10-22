@@ -19,7 +19,7 @@ class SimpleStreamClient:
             print("Check input values.")
         
     def connect(self):
-        self.s.connect((self.ip, self.port))
+        self.s.connect((self.ip, int(self.port)))
 
     def read_data(self):
         print(self.s.recv(1024).decode())
