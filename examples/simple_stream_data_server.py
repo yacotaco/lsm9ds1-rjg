@@ -21,11 +21,21 @@ class SimpleStreamServer:
         self.data = {}
         self.s = socket.socket()
         self.port = 8888
+        self.ip = '192.168.5.103'
+        self.inputs()
         self.init_socket()
+
+    def inputs(self):
+        try:
+            if len(sys.argv) > 1:
+                self.port = sys.argv[1]
+                self.ip = sys.argv[2]
+        except ValueError:
+            print("Check input values.")
 
     def init_socket(self):
         try:
-            self.s.bind(('192.168.5.103',int(self.port)))
+            self.s.bind((str(self.ip), int(self.port)))
         except Exception as Error:
             print(Error)
 
