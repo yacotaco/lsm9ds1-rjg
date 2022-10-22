@@ -74,11 +74,11 @@ class SimpleStreamServer:
     def read_data(self):
         temp, acc, gyro = self.driver.read_ag_data()
         mag = self.driver.read_magnetometer()
-        time = datetime.datetime.now()
+        t = dt.datetime.now()
         self.data = {'temp': temp, 'acc_x': acc[0], 'acc_y': acc[1], 'acc_z': acc[2],
                      'gyro_x': gyro[0], 'gyro_y': gyro[1], 'gyro_z': gyro[2],
                      'mag_x': mag[0], 'mag_y': mag[1], 'mag_z': mag[2],
-                                      'time': time}
+                                      'time': t}
 
     def generate_dummy_data(self):
         temp = [r.randint(80, 110)]
