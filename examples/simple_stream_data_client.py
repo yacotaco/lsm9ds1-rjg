@@ -5,7 +5,7 @@ class SimpleStreamClient:
     def __init__(self):
         self.data = {}
         self.s = socket.socket()
-        self.port = 8880
+        self.port = 8888
         
     def connect(self):
         self.s.connect(('127.0.0.1', self.port))
