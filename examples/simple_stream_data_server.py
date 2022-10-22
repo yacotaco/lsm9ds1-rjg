@@ -8,7 +8,7 @@ import socket
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from lsm9ds1_rjg import Driver, I2CTransport, SPITransport
 
-class SimpleStreamServer:
+class SimpleStreamingServer:
     """Streams sensor data from RPi over localhost"""
     """This example shows how to poll the sensor for new data.
     It queries the sensor to discover when the accelerometer/gyro
@@ -100,4 +100,4 @@ class SimpleStreamServer:
 
 
 if __name__ == '__main__':
-    SimpleStreamServer().main()
+    SimpleStreamingServer().main()

@@ -3,7 +3,7 @@ import socket
 import sys
 
 
-class SimpleStreamClient:
+class SimpleStreamingClient:
     def __init__(self):
         self.data = {}
         self.s = socket.socket()
@@ -38,4 +38,4 @@ class SimpleStreamClient:
 
 
 if __name__ == '__main__':
-    SimpleStreamClient().main()
+    SimpleStreamingClient().main()
