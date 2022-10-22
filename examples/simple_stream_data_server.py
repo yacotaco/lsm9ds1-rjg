@@ -15,7 +15,7 @@ class SimpleStreamServer:
     has new data and then reads all the sensors."""
 
     def __init__(self):
-        self.driver = self._create_spi_driver()
+        # self.driver = self._create_spi_driver()
         self.driver = self._create_i2c_driver()
         self.driver.configure()
         self.data = {}
